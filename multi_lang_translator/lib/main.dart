@@ -5,7 +5,7 @@ import 'package:multi_lang_translator/pages/loading.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/text_converter',
+      initialRoute: '/speech_text',
       routes: {
         '/': (context) => Loading(),
         '/text_converter': (context) => Text_Converter(),

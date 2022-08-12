@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:translator/translator.dart';
 
 class SpeechText extends StatefulWidget {
   const SpeechText({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class _SpeechTextState extends State<SpeechText> {
   SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
   String _lastWords = '';
+  var output = "";
 
   @override
   void initState() {
@@ -41,12 +43,22 @@ class _SpeechTextState extends State<SpeechText> {
     setState(() {});
   }
 
+  void translate(String src, String desc, String input) async {
+    GoogleTranslator translator = new GoogleTranslator();
+    var translation = await translator.translate(input, from: src, to: desc);
+    setState(() {
+      output = translation.text.toString();
+      print(output);
+    });
+  }
+
   /// This is the callback that the SpeechToText plugin calls when
   /// the platform returns recognized words.
   void _onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
       _lastWords = result.recognizedWords;
       print(_lastWords);
+      translate('en', 'hi', _lastWords);
     });
   }
 
