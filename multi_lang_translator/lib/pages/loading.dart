@@ -1,6 +1,6 @@
 import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:multi_lang_translator/pages/input_selector.dart';
 
@@ -19,18 +19,25 @@ class _LoadingState extends State<Loading> {
   }
 
   _navigateHome() async {
-    await Future.delayed(Duration(milliseconds: 2000), () {});
+    await Future.delayed(const Duration(milliseconds: 3000), () {});
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => InputSelector()));
+        context, MaterialPageRoute(builder: (context) => const InputSelector()));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Image(image: AssetImage('assests/SIH_Logo1.png')),
+      body: AnimatedSplashScreen(
+            duration: 3000,
+            // ignore: unnecessary_const
+            splash: 'assests/SIH_Logo1.png',
+            splashIconSize: double.infinity,
+            nextScreen: const InputSelector(),
+            splashTransition: SplashTransition.fadeTransition,
+            backgroundColor: Colors.white,
       ),
     );
   }
 }
+
