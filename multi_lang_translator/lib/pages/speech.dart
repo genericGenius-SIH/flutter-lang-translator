@@ -48,8 +48,13 @@ class _SpeechTextState extends State<SpeechText> {
     var translation = await translator.translate(input, from: src, to: desc);
     setState(() {
       output = translation.text.toString();
-      print(output);
     });
+
+    if (src == '--' || desc == '--') {
+      setState(() {
+        output = 'Fail to translate';
+      });
+    }
   }
 
   /// This is the callback that the SpeechToText plugin calls when
