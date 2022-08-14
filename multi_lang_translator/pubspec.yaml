@@ -39,6 +39,9 @@ dependencies:
   speech_to_text: ^5.6.1
   avatar_glow: ^2.0.2
   highlight_text: ^1.4.0
+  pdf_text: ^0.5.0
+  file_picker: ^4.6.1
+  flutter_launcher_icons: ^0.10.0
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +54,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assests/SIH_Logo1.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
