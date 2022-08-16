@@ -30,7 +30,7 @@ class _LoadingState extends State<Loading> {
       body: AnimatedSplashScreen(
             duration: 3000,
             // ignore: unnecessary_const
-            splash: 'assests/SIH_Logo1.png',
+            splash: 'asset/SIH_Logo1.png',
             splashIconSize: double.infinity,
             nextScreen: const InputSelector(),
             splashTransition: SplashTransition.fadeTransition,
