@@ -25,10 +25,10 @@ class _PdfTranslatorState extends State<PdfTranslator> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
           appBar: AppBar(
-            title: const Text('PDF Text Example'),
+            title: const Text('PDF Translation'),
+            centerTitle: true,
           ),
           body: Container(
             alignment: Alignment.center,
@@ -66,12 +66,19 @@ class _PdfTranslatorState extends State<PdfTranslator> {
                   onPressed: _buttonsEnabled ? _readWholeDoc : () {},
                 ),
                 Padding(
-                  child: Text(
-                    _pdfDoc == null
-                        ? "Pick a new PDF document and wait for it to load..."
-                        : "PDF document loaded, ${_pdfDoc!.length} pages\n",
-                    style: TextStyle(fontSize: 18),
-                    textAlign: TextAlign.center,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                      color: Colors.black,
+                      width: 1,
+                    )),
+                    child: Text(
+                      _pdfDoc == null
+                          ? "Pick a new PDF document and wait for it to load..."
+                          : "PDF document loaded, ${_pdfDoc!.length} pages\n",
+                      style: TextStyle(fontSize: 18),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   padding: EdgeInsets.all(15),
                 ),
@@ -83,10 +90,10 @@ class _PdfTranslatorState extends State<PdfTranslator> {
                   ),
                   padding: EdgeInsets.all(15),
                 ),
-                Text(_text),
+                Container(child: Text(_text)),
               ],
             ),
-          )),
+          ),
     );
   }
 
