@@ -5,14 +5,14 @@ import 'dart:async';
 
 import 'package:pdf_text/pdf_text.dart';
 
-void main() => runApp(MyApp());
+class PdfTranslator extends StatefulWidget {
+  const PdfTranslator({Key? key}) : super(key: key);
 
-class MyApp extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  State<PdfTranslator> createState() => _PdfTranslatorState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _PdfTranslatorState extends State<PdfTranslator> {
   PDFDoc? _pdfDoc;
   String _text = "";
 
@@ -93,6 +93,7 @@ class _MyAppState extends State<MyApp> {
   /// Picks a new PDF document from the device
   Future _pickPDFText() async {
     var filePickerResult = await FilePicker.platform.pickFiles();
+    print('Path: $filePickerResult.files.single.path!');
     if (filePickerResult != null) {
       _pdfDoc = await PDFDoc.fromPath(filePickerResult.files.single.path!);
       setState(() {});

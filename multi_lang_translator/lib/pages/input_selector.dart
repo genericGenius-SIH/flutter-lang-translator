@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi_lang_translator/pages/pdf_text.dart';
 import 'package:multi_lang_translator/pages/speech.dart';
 import 'package:multi_lang_translator/pages/text_converter.dart';
 
@@ -97,7 +98,7 @@ class _InputSelectorState extends State<InputSelector> {
               
              ElevatedButton(
               
-           child:Text('Pdf'),
+           child:Text('Image'),
            style: ElevatedButton.styleFrom(
            primary: Colors.redAccent, //background color of button
            side: BorderSide(width:1, color:Colors.brown), //border width and color
@@ -110,12 +111,12 @@ class _InputSelectorState extends State<InputSelector> {
    ),
                
                
-         onPressed:(){},
+         onPressed:()=> {},
          
        ),
           SizedBox(width: 20),            
        ElevatedButton(
-         child:Text('Image'),
+         child:Text('PDF'),
          style: ElevatedButton.styleFrom(
        primary: Colors.redAccent, //background color of button
        side: BorderSide(width:1,  color:Colors.brown), //border width and color
@@ -126,7 +127,8 @@ class _InputSelectorState extends State<InputSelector> {
          fixedSize: const Size(110, 100),
         padding: EdgeInsets.all(20) //content padding inside button
    ),
-         onPressed:(){},
+         onPressed:()=> Navigator.push(context, 
+         MaterialPageRoute(builder: (context) => PdfTranslator())),
          
        ),
              
