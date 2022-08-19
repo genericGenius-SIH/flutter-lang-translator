@@ -171,8 +171,10 @@ class _Text_ConverterState extends State<Text_Converter> {
                       autofocus: false,
                       style: TextStyle(color: Colors.white, fontSize: 20.0),
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.text_snippet_outlined, color: Colors.white,),
-                        
+                        prefixIcon: Icon(
+                          Icons.text_snippet_outlined,
+                          color: Colors.white,
+                        ),
                         suffixIcon: languageController.text.isEmpty
                             ? Container(
                                 width: 0,
@@ -182,9 +184,13 @@ class _Text_ConverterState extends State<Text_Converter> {
                                 onPressed: () => languageController.clear(),
                               ),
                         hintText: 'Text to translate',
-                        hintStyle: TextStyle(fontSize: 15, color: Color.fromARGB(255, 211, 208, 208)),
+                        hintStyle: TextStyle(
+                            fontSize: 15,
+                            color: Color.fromARGB(255, 211, 208, 208)),
                         labelText: 'Please enter your Text',
-                        labelStyle: TextStyle(fontSize: 18, color: Color.fromARGB(255, 211, 208, 208)),
+                        labelStyle: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 211, 208, 208)),
                         border: OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1)),
