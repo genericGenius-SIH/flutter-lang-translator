@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multi_lang_translator/pages/Image_picker.dart';
 import 'package:multi_lang_translator/pages/image_camera_translation.dart';
-import 'package:multi_lang_translator/pages/pdf_text.dart';
+import 'package:multi_lang_translator/pages/pdf_translator.dart';
 import 'package:multi_lang_translator/pages/speech.dart';
 import 'package:multi_lang_translator/pages/text_converter.dart';
 
