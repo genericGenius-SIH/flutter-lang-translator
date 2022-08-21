@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi_lang_translator/pages/Image_picker.dart';
 import 'package:multi_lang_translator/pages/image_camera_translation.dart';
 import 'package:multi_lang_translator/pages/pdf_text.dart';
 import 'package:multi_lang_translator/pages/speech.dart';
@@ -78,7 +79,7 @@ class _InputSelectorState extends State<InputSelector> {
                   height: 5,
                 ),
                 ElevatedButton(
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ImageCameraTranslation())),
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp())),
                   child: Text("Image"),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.cyan,
