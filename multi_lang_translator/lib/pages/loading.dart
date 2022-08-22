@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:multi_lang_translator/pages/input_selector1.dart';
+import 'package:multi_lang_translator/pages/input_selector.dart';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);

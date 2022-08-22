@@ -13,7 +13,6 @@ class Text_Converter extends StatefulWidget {
 
 class _Text_ConverterState extends State<Text_Converter> {
   String url = '';
-
   var languages = ['Hindi', 'English', 'Marathi', 'Tamil'];
   var originLanguage = "From";
   var destinationLanguage = "To";
@@ -23,7 +22,6 @@ class _Text_ConverterState extends State<Text_Converter> {
   void translate(String src, String desc, String input) async {
     GoogleTranslator translator = new GoogleTranslator();
     var translation = await translator.translate(input, from: src, to: desc);
-
     url = 'http://192.168.0.106:8000/api?query=$input';
     var data = await fetchData(url);
     var data1 = jsonDecode(data);
@@ -49,7 +47,7 @@ class _Text_ConverterState extends State<Text_Converter> {
     } else if (language == 'Tamil') {
       return "ta";
     }
-    return "--";
+    return "en";
   }
 
   @override
@@ -61,7 +59,8 @@ class _Text_ConverterState extends State<Text_Converter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 22, 49, 89),
+        //Color.fromARGB(255, 22, 49, 89)
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(
             'Anuvadak!',
@@ -71,7 +70,7 @@ class _Text_ConverterState extends State<Text_Converter> {
             ),
           ),
           centerTitle: true,
-          backgroundColor: Color(0xff10223d),
+          backgroundColor: Colors.cyan,
           elevation: 0,
         ),
         body: GestureDetector(
@@ -83,7 +82,7 @@ class _Text_ConverterState extends State<Text_Converter> {
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.white,
+                        color: Colors.blueGrey,
                         width: 1,
                       ),
                       borderRadius: BorderRadius.circular(12),
@@ -93,7 +92,7 @@ class _Text_ConverterState extends State<Text_Converter> {
                       child: Text(
                         'Type To Translate',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.blueGrey,
                           fontSize: 18.0,
                         ),
                       ),
@@ -108,15 +107,15 @@ class _Text_ConverterState extends State<Text_Converter> {
                       Expanded(
                         child: Center(
                           child: DropdownButton(
-                              focusColor: Colors.white,
-                              iconDisabledColor: Colors.white,
-                              iconEnabledColor: Colors.white,
+                              focusColor: Colors.transparent,
+                              iconDisabledColor: Colors.transparent,
+                              iconEnabledColor: Colors.transparent,
                               hint: Text(
                                 originLanguage,
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 20.0),
+                                    color: Colors.black, fontSize: 20.0),
                               ),
-                              dropdownColor: Colors.white,
+                              dropdownColor: Colors.amber,
                               icon: Icon(Icons.keyboard_arrow_down),
                               items: languages.map((String dropDownStringItem) {
                                 return DropdownMenuItem(
@@ -136,7 +135,7 @@ class _Text_ConverterState extends State<Text_Converter> {
                       ),
                       Icon(
                         Icons.arrow_right_alt_outlined,
-                        color: Colors.white,
+                        color: Colors.black,
                         size: 40,
                       ),
                       SizedBox(
@@ -145,15 +144,15 @@ class _Text_ConverterState extends State<Text_Converter> {
                       Expanded(
                         child: Center(
                           child: DropdownButton(
-                              focusColor: Colors.white,
-                              iconDisabledColor: Colors.white,
-                              iconEnabledColor: Colors.white,
+                              focusColor: Colors.transparent,
+                              iconDisabledColor: Colors.transparent,
+                              iconEnabledColor: Colors.transparent,
                               hint: Text(
                                 destinationLanguage,
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 20.0),
+                                    color: Colors.black, fontSize: 20.0),
                               ),
-                              dropdownColor: Colors.white,
+                              dropdownColor: Colors.amber,
                               icon: Icon(Icons.keyboard_arrow_down),
                               items: languages.map((String dropDownStringItem) {
                                 return DropdownMenuItem(
@@ -177,13 +176,13 @@ class _Text_ConverterState extends State<Text_Converter> {
                     padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
                     child: TextFormField(
                       textInputAction: TextInputAction.done,
-                      cursorColor: Colors.white,
+                      cursorColor: Colors.black,
                       autofocus: false,
-                      style: TextStyle(color: Colors.white, fontSize: 20.0),
+                      style: TextStyle(color: Colors.black, fontSize: 20.0),
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.text_snippet_outlined,
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
                         suffixIcon: languageController.text.isEmpty
                             ? Container(
@@ -203,10 +202,10 @@ class _Text_ConverterState extends State<Text_Converter> {
                             color: Color.fromARGB(255, 211, 208, 208)),
                         border: OutlineInputBorder(
                             borderSide:
-                                BorderSide(color: Colors.white, width: 1)),
+                                BorderSide(color: Colors.blueGrey, width: 1)),
                         enabledBorder: OutlineInputBorder(
                             borderSide:
-                                BorderSide(color: Colors.white, width: 1)),
+                                BorderSide(color: Colors.blueGrey, width: 1)),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Color.fromARGB(255, 222, 222, 222),
@@ -226,7 +225,7 @@ class _Text_ConverterState extends State<Text_Converter> {
                     padding: EdgeInsets.all(8),
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Color.fromARGB(255, 46, 114, 216),
+                            primary: Colors.amber,
                             minimumSize: Size(60.0, 40.0)),
                         onPressed: () {
                           translate(
@@ -245,7 +244,7 @@ class _Text_ConverterState extends State<Text_Converter> {
                   Text(
                     "\n$output",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),

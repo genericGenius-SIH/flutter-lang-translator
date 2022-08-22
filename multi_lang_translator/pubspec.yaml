@@ -52,6 +52,7 @@ dependencies:
   learning_input_image: ^0.0.6+2
   learning_text_recognition: ^0.0.4
   provider: ^6.0.3
+  http: ^0.13.5
 
 dependency_overrides:
   platform: ^3.1.0
