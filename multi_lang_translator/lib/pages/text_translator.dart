@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:multi_lang_translator/others/model.dart';
 import 'package:multi_lang_translator/others/translate.dart';
 import 'package:translator/translator.dart';
 
@@ -12,27 +13,43 @@ class Text_Converter extends StatefulWidget {
 }
 
 class _Text_ConverterState extends State<Text_Converter> {
+  Model model = Model();
+  bool circular = true;
+
   String url = '';
   var languages = ['Hindi', 'English', 'Marathi', 'Tamil'];
   var originLanguage = "From";
   var destinationLanguage = "To";
   var output = "";
+  var failure = "";
   TextEditingController languageController = TextEditingController();
 
   void translate(String src, String desc, String input) async {
-    GoogleTranslator translator = new GoogleTranslator();
-    var translation = await translator.translate(input, from: src, to: desc);
-    url = 'http://192.168.0.106:8000/api?query=$input';
-    var data = await fetchData(url);
-    var data1 = jsonDecode(data);
+    // GoogleTranslator translator = new GoogleTranslator();
+    // var translation = await translator.translate(input, from: src, to: desc);
+    // url = 'https://anuvadak.herokuapp.com/';
+    // var data = await fetchData(url);
+    // var data1 = json.decode(data);
+
     setState(() {
-      // output = translation.text.toString();
-      output = data1['output'];
+      circular = true;
     });
 
     if (src == '--' || desc == '--') {
       setState(() {
-        output = 'Fail to translate';
+        failure = 'Fail to translate';
+      });
+    } else {
+      var data = await sendText(src, desc, input);
+      setState(() {
+        // output = translation.text.toString();
+        // model = Model.fromJson(data1);
+        // output = model.output;
+        output = data;
+        circular = false;
+      });
+      setState(() {
+        failure = '';
       });
     }
   }
@@ -47,7 +64,7 @@ class _Text_ConverterState extends State<Text_Converter> {
     } else if (language == 'Tamil') {
       return "ta";
     }
-    return "en";
+    return "--";
   }
 
   @override
@@ -227,7 +244,7 @@ class _Text_ConverterState extends State<Text_Converter> {
                         style: ElevatedButton.styleFrom(
                             primary: Colors.amber,
                             minimumSize: Size(60.0, 40.0)),
-                        onPressed: () {
+                        onPressed: languageController.text.isEmpty ? null : () {
                           translate(
                               getLanguageCode(originLanguage),
                               getLanguageCode(destinationLanguage),
@@ -241,14 +258,44 @@ class _Text_ConverterState extends State<Text_Converter> {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "\n$output",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  )
+                  // Text(
+                  //   "\n$output",
+                  //   style: TextStyle(
+                  //     color: Colors.black,
+                  //     fontWeight: FontWeight.bold,
+                  //     fontSize: 20,
+                  //   ),
+                  // ),
+                  Center(
+                      child: output != ''
+                          ? circular
+                              ? CircularProgressIndicator()
+                              : Column(
+                                  children: <Widget>[
+                                    Text(
+                                      failure == '' ?
+                                      "\n$output" : failure,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                          : Column(
+                              children: <Widget>[
+                                Text(
+                                  failure == '' ?
+                                  "\n$output" : failure,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
+                            )),
                 ],
               ),
             ),

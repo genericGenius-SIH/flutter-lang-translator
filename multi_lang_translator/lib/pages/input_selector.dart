@@ -86,7 +86,7 @@ class _InputSelectorState extends State<InputSelector> {
                   SizedBox(
                     height: 5,
                   ),
-                  ElevatedButton.icon(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp())), 
+                  ElevatedButton.icon(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ImageCameraTranslation())), 
                   icon: Icon(Icons.image, size: 32),
                   label: Text('Image'),
                   style: ElevatedButton.styleFrom(
