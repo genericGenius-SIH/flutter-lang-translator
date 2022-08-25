@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multi_lang_translator/pages/input_selector.dart';
 import 'package:multi_lang_translator/pages/speech.dart';
-import 'package:multi_lang_translator/pages/text_converter.dart';
+import 'package:multi_lang_translator/pages/text_translator.dart';
 import 'package:multi_lang_translator/pages/loading.dart';
 
 void main() => runApp(MaterialApp(

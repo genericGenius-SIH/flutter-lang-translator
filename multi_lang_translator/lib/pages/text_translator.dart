@@ -1,9 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:multi_lang_translator/others/model.dart';
 import 'package:multi_lang_translator/others/translate.dart';
-import 'package:translator/translator.dart';
 
 class Text_Converter extends StatefulWidget {
   const Text_Converter({Key? key}) : super(key: key);
@@ -13,10 +11,7 @@ class Text_Converter extends StatefulWidget {
 }
 
 class _Text_ConverterState extends State<Text_Converter> {
-  Model model = Model();
   bool circular = true;
-
-  String url = '';
   var languages = ['Hindi', 'English', 'Marathi', 'Tamil'];
   var originLanguage = "From";
   var destinationLanguage = "To";
@@ -25,12 +20,6 @@ class _Text_ConverterState extends State<Text_Converter> {
   TextEditingController languageController = TextEditingController();
 
   void translate(String src, String desc, String input) async {
-    // GoogleTranslator translator = new GoogleTranslator();
-    // var translation = await translator.translate(input, from: src, to: desc);
-    // url = 'https://anuvadak.herokuapp.com/';
-    // var data = await fetchData(url);
-    // var data1 = json.decode(data);
-
     setState(() {
       circular = true;
     });
@@ -42,9 +31,6 @@ class _Text_ConverterState extends State<Text_Converter> {
     } else {
       var data = await sendText(src, desc, input);
       setState(() {
-        // output = translation.text.toString();
-        // model = Model.fromJson(data1);
-        // output = model.output;
         output = data;
         circular = false;
       });
@@ -76,7 +62,6 @@ class _Text_ConverterState extends State<Text_Converter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //Color.fromARGB(255, 22, 49, 89)
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(
@@ -258,14 +243,6 @@ class _Text_ConverterState extends State<Text_Converter> {
                   SizedBox(
                     height: 20,
                   ),
-                  // Text(
-                  //   "\n$output",
-                  //   style: TextStyle(
-                  //     color: Colors.black,
-                  //     fontWeight: FontWeight.bold,
-                  //     fontSize: 20,
-                  //   ),
-                  // ),
                   Center(
                       child: output != ''
                           ? circular
